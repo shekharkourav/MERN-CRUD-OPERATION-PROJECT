@@ -42,4 +42,6 @@ post_route.post(
   postController.createPost
 );
 
+post_route.get('/get-posts',postController.getPosts);
+
 module.exports = post_route;
