@@ -12,27 +12,26 @@ function ShowComponent() {
     fetchPosts();
   }, []);
 
+  console.log(posts);
+
   return (
-    <div className="App">
+    <div >
       <h1>Posts</h1>
-      {posts.data != undefined && posts.data.data.length > 0 && (
-        <table style={{ width: '100%' }} border='1'>
+      {posts.data != undefined && posts.data.date.length>0 &&(
+        <table style={{ width: "100%" }} border="1">
           <thead>
             <th>Title</th>
             <th>Date</th>
             <th>Image</th>
           </thead>
           <tbody>
-            {posts.data.data.map(post => (
+            {posts.data.date.map((post) => (
               <tr>
                 <td>{post.title}</td>
                 <td>{post.date}</td>
                 <td>
                   <img
-                    src={
-                      'http://localhost:8080/api/postImages/'+
-                      post.image
-                    }
+                    src={"http://localhost:8080/api/postImages/" + post.image}
                     style={{ width: "100px", height: "100px" }}
                   />
                 </td>

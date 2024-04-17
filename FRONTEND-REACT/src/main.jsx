@@ -9,7 +9,7 @@ export default function Index() {
   return (
     <BrowserRouter basename="/">
       <Route path="/" element={<ShowComponent />} />
-     // <Route path="/show" element={<ShowComponent />} />
+      {/* <Route path="/show" element={<ShowComponent />} /> */}
     </BrowserRouter>
   );
 }
