@@ -12,7 +12,14 @@ function ShowComponent() {
     fetchPosts();
   }, []);
 
-  console.log(posts);
+  const deletePost=async(id,e)=>{
+    var response=await postService.deletePost(id);
+    if (response.data.success==true) {
+      alert(response.data.msg);
+      document.getElementById(id).parentElement.parentElement.remove();
+    }
+    alert(response.data.msg);
+  }
 
   return (
     <div >
@@ -23,6 +30,7 @@ function ShowComponent() {
             <th>Title</th>
             <th>Date</th>
             <th>Image</th>
+            <th>delete</th>
           </thead>
           <tbody>
             {posts.data.date.map((post) => (
@@ -35,6 +43,9 @@ function ShowComponent() {
                     style={{ width: "100px", height: "100px" }}
                   />
                 </td>
+                <td>
+                  <button id={post._id} onClick={(e)=>deletePost(post._id,e)}>Delete</button>
+                  </td>
               </tr>
             ))}
           </tbody>

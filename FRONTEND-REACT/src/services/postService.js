@@ -16,6 +16,11 @@ class Post {
     return axios.get(url);
   }
 
+  deletePost(id){
+    const url = "http://localhost:8080/api/delete-post/"+id;
+    return axios.get(url);
+  }
+
 }
 
 export default new Post();
