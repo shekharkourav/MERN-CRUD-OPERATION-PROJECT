@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import postService from "../services/postService";
 
+import UpdateModalComponent from "./UpdateModalComponent";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 function ShowComponent() {
   const [posts, setPosts] = useState({});
 
@@ -31,6 +34,7 @@ function ShowComponent() {
             <th>Date</th>
             <th>Image</th>
             <th>delete</th>
+            <th>Edit</th>
           </thead>
           <tbody>
             {posts.data.date.map((post) => (
@@ -45,7 +49,10 @@ function ShowComponent() {
                 </td>
                 <td>
                   <button id={post._id} onClick={(e)=>deletePost(post._id,e)}>Delete</button>
-                  </td>
+                </td>
+                <td>
+                  <UpdateModalComponent/>
+                </td>
               </tr>
             ))}
           </tbody>
