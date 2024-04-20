@@ -8,8 +8,8 @@ import ShowComponent from "./components/ShowComponent";
 export default function Index() {
   return (
     <BrowserRouter basename="/">
+      {/* <Route path="/" element={<App />} /> */}
       <Route path="/" element={<ShowComponent />} />
-      {/* <Route path="/show" element={<ShowComponent />} /> */}
     </BrowserRouter>
   );
 }

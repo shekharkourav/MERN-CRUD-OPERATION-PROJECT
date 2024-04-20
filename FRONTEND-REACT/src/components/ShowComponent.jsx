@@ -6,14 +6,21 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function ShowComponent() {
   const [posts, setPosts] = useState({});
+  const [isShow, invokemodal] = useState(false);
+
+  const initmodal = () => {
+    invokemodal(!isShow);
+  };
 
   const fetchPosts = async () => {
     setPosts(await postService.getPosts());
   };
 
+
+
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [posts]);
 
   const deletePost=async(id,e)=>{
     var response=await postService.deletePost(id);
@@ -21,7 +28,11 @@ function ShowComponent() {
       alert(response.data.msg);
       document.getElementById(id).parentElement.parentElement.remove();
     }
-    alert(response.data.msg);
+    if(true){
+      initmodal();
+    }else{
+      alert(response.data.msg);
+    }
   }
 
   return (
@@ -51,12 +62,13 @@ function ShowComponent() {
                   <button id={post._id} onClick={(e)=>deletePost(post._id,e)}>Delete</button>
                 </td>
                 <td>
-                  <UpdateModalComponent/>
+                  <UpdateModalComponent id={post._id} title={post.title} date={post.date}/>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        
       )}
     </div>
   );

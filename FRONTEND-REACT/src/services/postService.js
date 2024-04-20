@@ -11,16 +11,25 @@ class Post {
     return axios.post(url, formData, config);
   }
 
-  getPosts(){
+  getPosts() {
     const url = "http://localhost:8080/api/get-posts";
     return axios.get(url);
   }
 
-  deletePost(id){
-    const url = "http://localhost:8080/api/delete-post/"+id;
+  deletePost(id) {
+    const url = "http://localhost:8080/api/delete-post/" + id;
     return axios.get(url);
   }
 
+  update(formData) {
+    const url = "http://localhost:8080/api/update-post";
+    const config = {
+      headers: {
+        "Content-type": "multipart/form-data",
+      },
+    };
+    return axios.post(url, formData, config);
+  }
 }
 
 export default new Post();

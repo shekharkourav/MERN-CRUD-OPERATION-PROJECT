@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import postService from "../services/postService";
+import ShowComponent from "./ShowComponent";
 
 function CreateComponent() {
   const [title, setTitle] = useState("");
